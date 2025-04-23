@@ -204,15 +204,15 @@ main {
 }
 
 .carte-projet img, .carte-projet svg {
-    filter: brightness(0.85) drop-shadow(0 2px 8px rgba(37,99,235,0.17));
-    transition: filter 0.3s, transform 0.3s;
+    background: linear-gradient(135deg, #e0e7ff 0%, #bae6fd 100%);
+    filter: brightness(0.93) drop-shadow(0 2px 8px rgba(37,99,235,0.17));
+    transition: filter 0.3s, transform 0.3s, background 0.3s;
     border-radius: 1.2rem 1.2rem 0 0;
-    background: #e3f0fc;
 }
 .carte-projet:hover img, .carte-projet:hover svg {
+    background: linear-gradient(135deg, #60a5fa 0%, #c7d2fe 100%);
     filter: brightness(1.05) drop-shadow(0 4px 18px rgba(37,99,235,0.32)) saturate(1.2) hue-rotate(-12deg);
     transform: scale(1.04) rotate(-1deg);
-    background: #dbeafe;
 }
 
 .icon-projet {
