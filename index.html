@@ -15,9 +15,18 @@
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#a-propos">À propos</a></li>
                 <li><a href="#projets">Projets</a></li>
+                <li><a href="#competences">Compétences</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+        <!-- Bouton Dark Mode -->
+        <button id="darkModeToggle" aria-label="Activer/Désactiver le mode sombre">
+            <span class="toggle-icon">
+                <!-- Icône soleil/lune SVG -->
+                <svg class="sun" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="#FFD93B"/><g stroke="#FFD93B" stroke-width="2"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg>
+                <svg class="moon" width="24" height="24" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 0111.21 3a7 7 0 100 14 9 9 0 009.79-4.21z" fill="#FFF" stroke="#FFD93B" stroke-width="2"/></svg>
+            </span>
+        </button>
     </header>
     <main>
         <section id="accueil" class="section fade-in">
@@ -39,7 +48,14 @@
             <h2>Projets</h2>
             <div class="galerie">
                 <div class="carte-projet">
-                    <img src="assets/inf.png" alt="Projet 1">
+                    <div class="icon-projet-container">
+                        <!-- Icône code (HTML5) -->
+                        <svg class="icon-projet" viewBox="0 0 64 64" width="64" height="64">
+                          <polygon points="12,4 52,4 46,56 32,60 18,56" fill="#e44d26"/>
+                          <polygon points="32,54 42.7,51 46,8 32,8" fill="#f16529"/>
+                          <text x="32" y="40" text-anchor="middle" font-size="18" fill="#fff" font-family="Arial" font-weight="bold">HTML</text>
+                        </svg>
+                    </div>
                     <div class="infos">
                         <h3>informatique.etude</h3>
                         <p>Ce site est dédiée à offrir les meilleurs services d'apprentissage dans le domaine de l'informatique ,
@@ -47,18 +63,79 @@
                     </div>
                 </div>
                 <div class="carte-projet">
-                    <img src="assets/projet2.jpg" alt="Projet 2">
+                    <div class="icon-projet-container">
+                        <!-- Icône Web/Design -->
+                        <svg class="icon-projet" viewBox="0 0 64 64" width="64" height="64">
+                          <circle cx="32" cy="32" r="28" fill="#2563eb"/>
+                          <rect x="16" y="22" width="32" height="20" rx="4" fill="#fff"/>
+                          <rect x="24" y="30" width="16" height="4" rx="2" fill="#2563eb"/>
+                        </svg>
+                    </div>
                     <div class="infos">
                         <h3>Projet 2</h3>
                         <p>Une courte description du projet.</p>
                     </div>
                 </div>
                 <div class="carte-projet">
-                    <img src="assets/projet3.jpg" alt="Projet 3">
+                    <div class="icon-projet-container">
+                        <!-- Icône Base de données -->
+                        <svg class="icon-projet" viewBox="0 0 64 64" width="64" height="64">
+                          <ellipse cx="32" cy="20" rx="20" ry="8" fill="#6e7eb7"/>
+                          <rect x="12" y="20" width="40" height="24" rx="10" fill="#8ea2d3"/>
+                          <ellipse cx="32" cy="44" rx="20" ry="8" fill="#6e7eb7"/>
+                        </svg>
+                    </div>
                     <div class="infos">
                         <h3>Projet 3</h3>
                         <p>Une courte description du projet.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+        <section id="competences" class="section fade-in competences-section">
+            <h2>Mes Compétences</h2>
+            <div class="competences-container">
+                <div class="competence">
+                    <div class="icon html-icon">
+                        <!-- HTML SVG -->
+                        <svg viewBox="0 0 64 64" width="64" height="64">
+                            <polygon class="html-bg" points="12,4 52,4 46,56 32,60 18,56" fill="#e44d26"/>
+                            <polygon points="32,54 42.7,51 46,8 32,8" fill="#f16529"/>
+                            <text x="32" y="40" text-anchor="middle" font-size="18" fill="#fff" font-family="Arial" font-weight="bold">HTML</text>
+                        </svg>
+                    </div>
+                    <span>HTML5</span>
+                </div>
+                <div class="competence">
+                    <div class="icon css-icon">
+                        <!-- CSS SVG -->
+                        <svg viewBox="0 0 64 64" width="64" height="64">
+                            <polygon class="css-bg" points="12,4 52,4 46,56 32,60 18,56" fill="#264de4"/>
+                            <polygon points="32,54 42.7,51 46,8 32,8" fill="#2965f1"/>
+                            <text x="32" y="40" text-anchor="middle" font-size="18" fill="#fff" font-family="Arial" font-weight="bold">CSS</text>
+                        </svg>
+                    </div>
+                    <span>CSS3</span>
+                </div>
+                <div class="competence">
+                    <div class="icon js-icon">
+                        <!-- JS SVG -->
+                        <svg viewBox="0 0 64 64" width="64" height="64">
+                            <rect class="js-bg" x="12" y="4" width="40" height="52" rx="8" fill="#f0db4f"/>
+                            <text x="32" y="40" text-anchor="middle" font-size="18" fill="#323330" font-family="Arial" font-weight="bold">JS</text>
+                        </svg>
+                    </div>
+                    <span>JavaScript</span>
+                </div>
+                <div class="competence">
+                    <div class="icon php-icon">
+                        <!-- PHP SVG -->
+                        <svg viewBox="0 0 64 64" width="64" height="64">
+                            <ellipse class="php-bg" cx="32" cy="32" rx="24" ry="20" fill="#6e7eb7"/>
+                            <text x="32" y="40" text-anchor="middle" font-size="18" fill="#fff" font-family="Arial" font-weight="bold">PHP</text>
+                        </svg>
+                    </div>
+                    <span>PHP</span>
                 </div>
             </div>
         </section>
@@ -84,6 +161,6 @@
         </div>
         <p>&copy; 2025 Votre Nom. Tous droits réservés.</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

@@ -3,15 +3,16 @@
     --bleu-principal: #2563eb;
     --bleu-secondaire: #1e40af;
     --bleu-clair: #60a5fa;
-    --blanc: #161b22; /* Dark mode background */
-    --gris-clair: #23272f; /* Darker for dark mode */
+    --bleu-doux: #2d477c; /* Bleu doux pour la navbar, #2d477c */
+    --blanc: #f3f8fa; /* Dark mode background */
+    --gris-clair: #f7f7f7; /* Darker for dark mode */
     --ombre: 0 4px 24px rgba(37, 99, 235, 0.10);
     --font: 'Poppins', Arial, sans-serif;
-    --text-main: #f3f8fa;
+    --text-main: #cdcdd5; /* Noir doux pour le texte en mode clair */
     --text-secondary: #60a5fa;
-    --card-bg: #23272f;
-    --card-bg-hover: #22304a;
-    --footer-bg: #1e293b;
+    --card-bg: #f7f7f7;
+    --card-bg-hover: #f2f2f2;
+    --footer-bg: #f9f9f9;
 }
 
 body {
@@ -25,6 +26,18 @@ body {
     position: relative;
     z-index: 0;
     text-shadow: 0 2px 8px rgba(20,40,80,0.35), 0 1px 0 #113366; /* Ombre sombre pour lisibilité */
+}
+
+body.dark-mode {
+  --blanc: #161b22;
+  --gris-clair: #23272f;
+  --text-main: #f3f8fa;
+  --text-secondary: #60a5fa;
+  --card-bg: #23272f;
+  --card-bg-hover: #22304a;
+  --footer-bg: #1e293b;
+  background: var(--blanc);
+  color: var(--text-main);
 }
 
 body::before {
@@ -52,12 +65,21 @@ body::after {
     pointer-events: none;
 }
 
+body.dark-mode .competences-section {
+  background: #2d477c;
+}
+body.dark-mode .competences-section h2,
+body.dark-mode .competence span {
+  color: #f5f5f5;
+}
+
 header {
-    background: var(--footer-bg); /* Fond bleu clair pour la navbar */
+    background: var(--bleu-doux); /* Bleu doux #2d477c pour la navbar en mode clair */
     box-shadow: var(--ombre);
     position: sticky;
     top: 0;
     z-index: 100;
+    position: relative;
 }
 nav {
     display: flex;
@@ -82,11 +104,11 @@ nav ul {
 }
 nav a {
     text-decoration: none;
-    color: var(--text-main);
+    color: var(--text-main); /* Texte noir pour la navbar en mode clair */
     font-weight: 400;
     transition: color 0.2s;
     position: relative;
-    text-shadow: 0 2px 8px rgba(20,40,80,0.35), 0 1px 0 #113366;
+    text-shadow: 0 2px 8px rgba(20,40,80,0.08), 0 1px 0 #11336611;
 }
 nav a::after {
     content: '';
@@ -104,6 +126,13 @@ nav a:hover {
 }
 nav a:hover::after {
     width: 100%;
+}
+
+body.dark-mode header {
+    background: var(--footer-bg); /* Reste comme avant en mode sombre */
+}
+body.dark-mode nav a {
+    color: var(--text-main); /* Texte clair en mode sombre */
 }
 
 main {
@@ -154,6 +183,11 @@ main {
     box-shadow: 0 8px 32px rgba(37,99,235,0.10);
     border: 5px solid var(--bleu-clair);
     background: var(--gris-clair);
+    filter: hue-rotate(15deg) saturate(1.2) brightness(1.08) drop-shadow(0 0 8px #60a5fa44);
+    transition: filter 0.4s;
+}
+body.dark-mode .presentation .photo img {
+    filter: none;
 }
 
 #a-propos h2, #projets h2, #contact h2 {
@@ -227,11 +261,29 @@ main {
 
 .icon-projet {
     fill: #2563eb;
-    transition: fill 0.3s, filter 0.3s;
+    transition: fill 0.3s, filter 0.3s, transform 0.4s;
+    width: 64px;
+    height: 64px;
+    display: block;
+    margin: 0 auto 10px auto;
 }
 .carte-projet:hover .icon-projet {
     fill: #1e40af;
     filter: drop-shadow(0 2px 8px #60a5fa);
+    transform: scale(1.1) rotate(-6deg);
+}
+.icon-projet-container {
+    background: #f7f7f7;
+    border-radius: 1.2rem 1.2rem 0 0;
+    padding: 0.5rem 0 0.1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 180px;
+    transition: background 0.3s;
+}
+body.dark-mode .icon-projet-container {
+    background: #23272f;
 }
 
 .form-contact {
@@ -309,6 +361,86 @@ footer {
     text-decoration: underline;
 }
 
+/* ====== Compétences Section ====== */
+.competences-section {
+  padding: 50px 0;
+  background: #f9f9f9;
+  text-align: center;
+  transition: background 0.4s;
+}
+@media (prefers-color-scheme: dark) {
+  .competences-section {
+    background: #2d477c;
+  }
+  .competences-section h2,
+  .competence span {
+    color: #f5f5f5;
+  }
+}
+.competences-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #222;
+}
+.competences-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+.competence {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s;
+}
+.competence:hover {
+  transform: scale(1.1) rotate(-2deg);
+}
+.icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 10px;
+  transition: transform 0.6s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.competence:hover .icon {
+  transform: rotateY(360deg) scale(1.2);
+}
+.html-icon .html-bg {
+  animation: htmlPulse 1.5s infinite alternate;
+}
+@keyframes htmlPulse {
+  0% { fill: #e44d26; }
+  100% { fill: #ff6f3c; }
+}
+.css-icon .css-bg {
+  animation: cssPulse 1.5s infinite alternate;
+}
+@keyframes cssPulse {
+  0% { fill: #264de4; }
+  100% { fill: #6ec6ff; }
+}
+.js-icon .js-bg {
+  animation: jsPulse 1.5s infinite alternate;
+}
+@keyframes jsPulse {
+  0% { fill: #f0db4f; }
+  100% { fill: #ffe873; }
+}
+.php-icon .php-bg {
+  animation: phpPulse 1.5s infinite alternate;
+}
+@keyframes phpPulse {
+  0% { fill: #6e7eb7; }
+  100% { fill: #8ea2d3; }
+}
+.competence span {
+  font-size: 1.1rem;
+  color: #333;
+  margin-top: 8px;
+  letter-spacing: 1px;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
     .presentation {
@@ -342,4 +474,50 @@ footer {
         width: 98vw;
         max-width: 98vw;
     }
+}
+
+/* ====== Bouton Dark Mode ====== */
+#darkModeToggle {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  z-index: 100;
+  transition: transform 0.3s;
+}
+#darkModeToggle:active {
+  transform: scale(0.95) rotate(-10deg);
+}
+.toggle-icon {
+  display: inline-block;
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+.toggle-icon svg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  transition: opacity 0.5s, transform 0.6s cubic-bezier(.68,-0.55,.27,1.55);
+  opacity: 0;
+  transform: scale(0.7) rotate(-30deg);
+}
+.toggle-icon .sun {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+.dark-mode .toggle-icon .sun {
+  opacity: 0;
+  transform: scale(0.7) rotate(-30deg);
+}
+.toggle-icon .moon {
+  opacity: 0;
+  transform: scale(0.7) rotate(30deg);
+}
+.dark-mode .toggle-icon .moon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
 }

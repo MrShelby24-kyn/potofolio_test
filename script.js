@@ -47,3 +47,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// ====== Dark Mode Toggle ======
+(function() {
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  const body = document.body;
+
+  if (!darkModeToggle) {
+    console.warn('Bouton darkModeToggle introuvable dans le DOM.');
+    return;
+  } else {
+    console.log('Bouton darkModeToggle trouvé, script actif.');
+  }
+
+  function setDarkMode(enabled) {
+    if (enabled) {
+      body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      body.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+    }
+  }
+
+  darkModeToggle.addEventListener('click', () => {
+    const isDark = body.classList.contains('dark-mode');
+    setDarkMode(!isDark);
+    console.log('Dark mode toggled:', !isDark);
+  });
+
+  // Initialisation : appliquer le thème sauvegardé ou le thème système
+  (function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      setDarkMode(true);
+    } else if (savedTheme === 'light') {
+      setDarkMode(false);
+    } else {
+      // Si pas de préférence, suivre le système
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setDarkMode(prefersDark);
+    }
+    console.log('Thème initial appliqué.');
+  })();
+})();
