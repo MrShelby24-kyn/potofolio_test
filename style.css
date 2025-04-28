@@ -293,7 +293,8 @@ footer {
 /* ====== Compétences Section ====== */
 .competences-section {
   padding: 50px 0;
-  background: #2d477c;
+  background: transparent !important;
+  box-shadow: none !important;
   text-align: center;
   transition: background 0.4s;
 }
@@ -359,6 +360,35 @@ footer {
   color: #f5f5f5;
   margin-top: 8px;
   letter-spacing: 1px;
+}
+
+/* Animation personnalisée pour les compétences */
+.competences-section .competence {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: none;
+}
+.competences-section.visible .competence {
+    animation: slide-in-competence 0.7s cubic-bezier(.4,0,.2,1) forwards;
+}
+.competences-section.visible .competence:nth-child(1) { animation-delay: 0.05s; }
+.competences-section.visible .competence:nth-child(2) { animation-delay: 0.18s; }
+.competences-section.visible .competence:nth-child(3) { animation-delay: 0.31s; }
+.competences-section.visible .competence:nth-child(4) { animation-delay: 0.44s; }
+.competences-section.visible .competence:nth-child(5) { animation-delay: 0.57s; }
+@keyframes slide-in-competence {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-8px) scale(1.04);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 /* Responsive */

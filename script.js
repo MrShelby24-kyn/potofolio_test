@@ -1,7 +1,8 @@
 // Apparition animée des sections au scroll (haut -> bas et bas -> haut)
 function revealSections() {
     const sections = document.querySelectorAll('.section');
-    const triggerBottom = window.innerHeight * 0.88;
+    // Pour que l'animation s'applique toujours au chargement, on met le seuil à la hauteur totale de la fenêtre
+    const triggerBottom = window.innerHeight * 1.0;
     sections.forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
         const sectionBottom = section.getBoundingClientRect().bottom;
@@ -12,9 +13,31 @@ function revealSections() {
             section.classList.remove('visible');
         }
     });
+    animateCompetences();
 }
 window.addEventListener('scroll', revealSections);
 window.addEventListener('load', revealSections);
+
+// Animation personnalisée pour la section compétences
+function animateCompetences() {
+    const competenceSection = document.querySelector('.competences-section');
+    if (!competenceSection) return;
+    const competences = competenceSection.querySelectorAll('.competence');
+    if (competenceSection.classList.contains('visible')) {
+        // Ajoute la classe visible pour déclencher l'animation CSS
+        competences.forEach((el, i) => {
+            // Rien à faire ici, l'animation CSS gère tout via .visible
+        });
+    } else {
+        // Retire l'animation si la section n'est plus visible
+        competences.forEach(el => {
+            el.style.animation = 'none';
+            // Force le repaint pour réinitialiser l'animation si besoin
+            void el.offsetWidth;
+            el.style.animation = '';
+        });
+    }
+}
 
 // Apparition animée des cartes projets (haut -> bas et bas -> haut)
 function revealProjets() {
