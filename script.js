@@ -14,6 +14,7 @@ function revealSections() {
         }
     });
     animateCompetences();
+    animateContact();
 }
 window.addEventListener('scroll', revealSections);
 window.addEventListener('load', revealSections);
@@ -37,6 +38,13 @@ function animateCompetences() {
             el.style.animation = '';
         });
     }
+}
+
+// Ajout : garantir l'animation de la section contact
+function animateContact() {
+    const contactSection = document.getElementById('contact');
+    if (!contactSection) return;
+    // L'animation est gérée par la classe .visible
 }
 
 // Apparition animée des cartes projets (haut -> bas et bas -> haut)
@@ -69,6 +77,21 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1800);
         });
     }
+});
+
+// ====== Défilement fluide via la navbar ======
+document.addEventListener('DOMContentLoaded', function() {
+  const navbarLinks = document.querySelectorAll('nav a[href^="#"]');
+  navbarLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href').slice(1);
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        e.preventDefault();
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
 });
 
 // ====== Dark Mode Toggle ======

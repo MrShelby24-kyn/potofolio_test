@@ -172,23 +172,36 @@ main {
     gap: 2rem;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: flex-start;
 }
 .carte-projet {
-    background: var(--card-bg);
+    background: linear-gradient(135deg, #23272f 70%, #2563eb 100%);
+    border: 1.5px solid #1e40af44;
+    box-shadow: 0 4px 32px 0 rgba(37,99,235,0.13);
+    transition: background 0.4s, box-shadow 0.4s;
     border-radius: 1.2rem;
-    box-shadow: 0 4px 24px rgba(30,41,59,0.25);
     overflow: hidden;
     width: 310px;
-    transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s, background 0.3s;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(40px);
+    margin-bottom: 0;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
     color: var(--text-main);
 }
 .carte-projet.visible {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.1s;
+}
+.carte-projet:nth-child(2) {
+    background: linear-gradient(135deg, #23272f 70%, #60a5fa 100%);
+}
+.carte-projet:nth-child(3) {
+    background: linear-gradient(135deg, #23272f 70%, #8ea2d3 100%);
+}
+.carte-projet:hover {
+    box-shadow: 0 8px 40px 0 #2563eb44;
+    background: linear-gradient(135deg, #1e40af 70%, #60a5fa 100%);
 }
 .carte-projet img {
     width: 100%;
@@ -210,11 +223,6 @@ main {
     font-size: 1rem;
     margin: 0;
     text-shadow: 0 2px 8px rgba(20,40,80,0.35), 0 1px 0 #113366;
-}
-.carte-projet:hover {
-    background: var(--card-bg-hover);
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 8px 32px rgba(37,99,235,0.13);
 }
 
 .carte-projet img, .carte-projet svg {
@@ -544,6 +552,16 @@ footer {
     color: var(--text-secondary);
     margin-bottom: 1.2rem;
     text-shadow: 0 2px 8px rgba(20,40,80,0.25);
+}
+
+#contact.section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+}
+#contact.section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @media (max-width: 600px) {
