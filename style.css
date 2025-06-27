@@ -283,6 +283,19 @@ footer {
     color: var(--text-main);
     text-shadow: none;
 }
+.footer-contacts svg {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 6px;
+    display: inline-block;
+}
+.footer-contacts a {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
 
 .footer-contacts ul {
     list-style: none;
