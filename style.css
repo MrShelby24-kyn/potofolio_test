@@ -90,13 +90,17 @@ nav a {
     position: relative;
     text-shadow: 0 2px 8px rgba(20,40,80,0.08), 0 1px 0 #11336611;
 }
+nav a:hover {
+    color: var(--text-secondary);
+}
+
 nav a::after {
     content: '';
     display: block;
     height: 2px;
     width: 0;
-    background: var(--bleu-principal);
-    transition: width 0.3s cubic-bezier(.4,0,.2,1);
+    background: var(--text-secondary);
+    transition: width 0.3s cubic-bezier(.4,0,.2,1), background 0.2s;
     position: absolute;
     bottom: -4px;
     left: 0;
@@ -496,6 +500,93 @@ footer {
     }
 }
 
+
+
+.solo-projet {
+    border: 2px solid #60a5fa;
+    box-shadow: 0 4px 24px rgba(96, 165, 255, 0.12);
+    border-radius: 1.3rem;
+    padding: 1.2rem 1.4rem;
+    margin: 0 auto 2rem auto;
+    background: linear-gradient(120deg, #23272f 80%, #60a5fa22 100%);
+    transition: box-shadow 0.3s, transform 0.3s;
+    width: 90%;
+    max-width: 98vw;
+}
+.solo-projet:hover {
+    box-shadow: 0 8px 32px rgba(96, 165, 255, 0.22), 0 2px 8px #60a5fa44;
+    transform: translateY(-4px) scale(1.02);
+}
+.solo-projet-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2.2rem;
+}
+.solo-projet .icon-projet-container {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #23272f;
+    border-radius: 1.1rem;
+    box-shadow: 0 2px 8px #60a5fa22;
+    width: 90px;
+    height: 90px;
+}
+.solo-projet .icon-projet {
+    width: 64px;
+    height: 64px;
+}
+.solo-projet .infos {
+    margin-top: 0;
+    flex: 1;
+    text-align: left;
+}
+@media (max-width: 700px) {
+    .solo-projet {
+        max-width: 98vw;
+        padding: 1.1rem 0.3rem;
+    }
+    .solo-projet-content {
+        flex-direction: column;
+        gap: 1.2rem;
+        align-items: flex-start;
+    }
+    .solo-projet .icon-projet-container {
+        width: 70px;
+        height: 70px;
+    }
+    .solo-projet .icon-projet {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.github-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #23272f;
+    color: #60a5fa;
+    border: 1.5px solid #60a5fa;
+    border-radius: 0.7rem;
+    padding: 0.55rem 1.1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    text-decoration: none;
+    box-shadow: 0 2px 10px rgba(96, 165, 255, 0.08);
+    transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+}
+.github-btn:hover {
+    background: #60a5fa;
+    color: #23272f;
+    border-color: #23272f;
+    transform: scale(1.06);
+    text-decoration: none;
+}
+
 /* ====== Bouton Dark Mode ====== */
 #darkModeToggle {
   display: none !important;
@@ -552,6 +643,14 @@ footer {
     color: var(--text-secondary);
     margin-bottom: 1.2rem;
     text-shadow: 0 2px 8px rgba(20,40,80,0.25);
+}
+
+#accueil h1,
+#a-propos h2,
+#experience h2,
+#projets h2,
+#competences h2 {
+    color: var(--text-secondary);
 }
 
 #contact.section {
